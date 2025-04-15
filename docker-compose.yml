@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "12335:12335"
+    depends_on:
+      - ollama
+      - pyserver
+  pyserver:
+    build:
+      context: ./resource
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    command: >
+      bash -c "ollama pull llama2 && ollama serve"
+
+volumes:
+  ollama_models:
