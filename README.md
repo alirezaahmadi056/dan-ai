@@ -44,7 +44,7 @@ model: oogway | po | shifu   # (only for /ai/suggestion)
 
 **usage:** <br/>
 
-```http request
+```bash
     curl https://daneshjooyar.com:12335/
 ```
 
